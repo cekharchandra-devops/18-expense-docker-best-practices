@@ -1,0 +1,24 @@
+version: "3"
+networks:
+  expense:
+volumes:
+  mysql:
+services:
+  mysql:
+    image: cekharch/mysql:v4
+    container_name: mysql
+    volumes:
+      - mysql:/var/lib/mysql
+  backend:
+    image: cekharch/backend:v4
+    container_name: backend
+    depends_on:
+      - mysql
+    command: sh -c "sleep 10 && node /opt/server/index.js"
+  frontend:
+    image: cekharch/frontend:v4
+    container_name: frontend
+    ports:
+      - 80:80
+    depends_on:
+      - backend
