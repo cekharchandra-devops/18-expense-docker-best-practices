@@ -5,18 +5,18 @@ volumes:
   mysql:
 services:
   mysql:
-    image: cekharch/mysql:v6
+    image: cekharch/mysql:v7
     container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
   backend:
-    image: cekharch/backend:v6
+    image: cekharch/backend:v7
     container_name: backend
     depends_on:
       - mysql
     command: sh -c "sleep 10 && node /opt/server/index.js"
   frontend:
-    image: cekharch/frontend:v6
+    image: cekharch/frontend:v7
     container_name: frontend
     ports:
       - 80:80
