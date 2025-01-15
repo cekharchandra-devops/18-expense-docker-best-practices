@@ -1,5 +1,7 @@
 FROM nginx:mainline-alpine3.20-slim
 
+
+RUN apk add --no-cache curl
 RUN rm -rf /etc/nginx/conf.d/default.conf && \
     mkdir -p /var/cache/nginx/client_temp && \
     mkdir -p /var/cache/nginx/proxy_temp && \
